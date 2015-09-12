@@ -15,7 +15,7 @@ void VS()
     vec3 worldPos = GetWorldPos(modelMatrix);
     gl_Position = GetClipPos(worldPos);
     vScreenPos = GetScreenPosPreDiv(gl_Position);
-    vScreenPosInv = vec2(vScreenPos.x, 1 - vScreenPos.y); // screen is vertically mirrored in opengl
+    vScreenPosInv = vec2(vScreenPos.x, 1.0 - vScreenPos.y); // screen is vertically mirrored in opengl
 }
 
 void PS()
