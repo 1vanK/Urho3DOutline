@@ -1,4 +1,4 @@
-# Urho3DOutline
+# Outline Glow
 
 Tuning: http://urho3d.prophpbb.com/topic1162-10.html
 

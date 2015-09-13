@@ -9,6 +9,7 @@
 varying vec2 vScreenPos;
 varying vec2 vScreenPosInv;
 
+
 void VS()
 {
     mat4 modelMatrix = iModelMatrix;
@@ -21,12 +22,12 @@ void VS()
 void PS()
 {
     vec3 rgb = texture2D(sDiffMap, vScreenPos).rgb;
-    vec3 mask = texture2D(sNormalMap, vScreenPosInv).rgb;      
+    vec3 mask = texture2D(sNormalMap, vScreenPosInv).rgb;
 
-    vec4 blurredMask = GaussianBlur(3, vec2(0.0, 1.0), vec2(0.008, 0.008), 2.0, sNormalMap, vScreenPosInv);
-    blurredMask = blurredMask + GaussianBlur(3, vec2(1.0, 0.0), vec2(0.008, 0.008), 2.0, sNormalMap, vScreenPosInv);
-    blurredMask = blurredMask + GaussianBlur(3, vec2(0.0, 1.0), vec2(0.004, 0.004), 2.0, sNormalMap, vScreenPosInv);
-    blurredMask = blurredMask + GaussianBlur(3, vec2(1.0, 0.0), vec2(0.004, 0.004), 2.0, sNormalMap, vScreenPosInv);
+    vec4 blurredMask = GaussianBlur(3, vec2(0.0, 1.0), vec2(0.004, 0.004), 2.0, sNormalMap, vScreenPosInv) * 0.5;
+    blurredMask = blurredMask + GaussianBlur(3, vec2(1.0, 0.0), vec2(0.004, 0.004), 2.0, sNormalMap, vScreenPosInv) * 0.5;
+    blurredMask = blurredMask + GaussianBlur(3, vec2(1.0, 1.0), vec2(0.004, 0.004), 2.0, sNormalMap, vScreenPosInv) * 0.5;
+    blurredMask = blurredMask + GaussianBlur(3, vec2(1.0, -1.0), vec2(0.004, 0.004), 2.0, sNormalMap, vScreenPosInv) * 0.5;
         
     if (mask.rgb == vec3(1.0, 1.0, 1.0))
         gl_FragColor = vec4(rgb, 1.0);
