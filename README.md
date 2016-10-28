@@ -6,6 +6,8 @@ Example: https://github.com/1vanK/Urho3DOutlineSelectionExample <br>
 
 -------------------------------------------------------
 
+License: Public Domain
+
 # Outline Glow
 
 Tuning: http://urho3d.prophpbb.com/topic1162-10.html
